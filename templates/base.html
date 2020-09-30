@@ -100,13 +100,13 @@
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">Liens Rapides</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Accueil</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>A propos</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Catalogue Produits</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Solutions</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Partenaires</a></li>
+                            <li><a href="{% url 'index' %}"><span class="icon-long-arrow-right mr-2"></span>Accueil</a></li>
+                            <li><a href="{% url 'about' %}"><span class="icon-long-arrow-right mr-2"></span>A propos</a></li>
+                            <li><a href="{% url 'produits' %}"><span class="icon-long-arrow-right mr-2"></span>Catalogue Produits</a></li>
+                            <li><a href="{% url 'solution' %}"><span class="icon-long-arrow-right mr-2"></span>Solutions</a></li>
+                            <li><a href="{% url 'partenaires' %}"><span class="icon-long-arrow-right mr-2"></span>Partenaires</a></li>
                             <li><a href="{% url 'blog' %}"><span class="icon-long-arrow-right mr-2"></span>Actualité</a></li>
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+                            <li><a href="{% url 'contact' %}"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                         <h2 class="ftco-heading-2">Solutions</h2>
                         <ul class="list-unstyled">
                             {% for sol in cat_sol %}
-                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>{{sol.name}}</a></li>
+                            <li><a href="{% url 'solution-detail' slug=sol.slug %}"><span class="icon-long-arrow-right mr-2"></span>{{sol.name}}</a></li>
                               
                             {% endfor %}
                         </ul>
