@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% static "img" as baseUrl %}
+    
+{% block content %}
+    
+
+    
+   <center> <h1 class="m-5 bread">Nos partenaires</h1> </center>
+
+   
+		<section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex">
+          {% for part in partenaires %}
+            <div class="col-md-3 d-flex ftco-animate">
+              <div class="blog-entry justify-content-end">
+                <div class="text">
+                  <a href="{{part.url_marque}}" class="block-20 img-fluid" >
+                  <img class="img-fluid" src="{{part.logo.url}}" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+
+{% endblock content %}

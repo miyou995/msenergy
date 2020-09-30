@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% static "img" as baseUrl %}
+    
+{% block content %}
+    
+
+      <div class="container m-4">
+        <div class="row d-flex flex-row-reverse justify-content-around justify-content-lg-center">
+          <h1 class="m-5 bread text-danger">{{post.titre|title}}</h1>
+
+            <div class="col- ">
+              <img class=" rounded" src="{{post.image.url}}" width="350px" alt="">
+            </div>
+        </div>
+      </div>
+      <hr class="ml-auto mr-auto text-center" style="width: 70vw;">
+		<section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-9 order-md-last ftco-animate">
+            <h2 class="mb-3">{{post.intro}}</h2>
+            <p>{{post.text|safe}}</p>
+
+            <h5 class="float-right">{{post.created_date}}</h5>
+
+          </div> <!-- .col-md-8 -->
+
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+    {% endblock content %}

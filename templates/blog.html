@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% static "img" as baseUrl %}
+    
+{% block content %}
+    
+<section class="section-blog" data-stellar-background-ratio="0.5">
+  <div class="container">
+  <div class="row d-flex justify-content-center">
+
+<h2 class=" h1 text-white text-center text-uppercase">actualité</h2>
+</section>
+
+
+		<section class="ftco-section mt-4">
+      <div class="container">
+        <div class="row d-flex">
+          {% for post in posts %}
+            
+            <div class="col-md-3 d-flex ftco-animate">
+              <div class="blog-entry justify-content-end">
+                <div class="text">
+                  <h3 class="heading"><a href="{% url 'post-detail' slug=post.slug %}">{{post.titre|title}}</a></h3>
+                  <div class="meta mb-3">
+                    <div><a href="{% url 'post-detail' slug=post.slug %}">{{post.created_date}}</a></div>
+                  </div>
+                  <a href="{% url 'post-detail' slug=post.slug %}" class="block-20 img" style="background-image: url({{post.image.url}});">
+                  </a>
+                  <p>{{post.text|safe|truncatewords:20}}</p>
+                </div>
+              </div>
+            </div>
+
+          {% endfor %}
+      </div>
+    </section>
+    {% endblock content %}

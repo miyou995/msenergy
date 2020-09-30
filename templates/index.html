@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+{% block content %}
+<div class="overlay"></div>
+
+<div class="carousel-carouss owl-carousel ftco-owl p-md-5 ">
+  {% for slide in slides %}
+    <div class="item">
+      <img class="float-left img-fluid" src="{{slide.image.url}}" style="width:100vw; height:40vw">
+      {% if slide.title %}
+      <h2> 
+        {{slide.title}}
+      </h2>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+
+<section class="ftco-section ftco-no-pb">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+        <span class="subheading">Nos produits</span>
+        <h1 class="mb-2 text-uppercase">UNE GAMME TOUJOURS PLUS LARGE DE Materiel Electrique</h1>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      {% for cp in cat_prod %}
+      <div class="col- col-sm-6 col-md-3 col-lg-2 d-flex align-self-stretch ftco-animate justify-content-center">
+        <div class="media block-6 services d-block text-center">
+          <div class="icon d-flex justify-content-center align-items-center">
+            {% if cp.image %}
+              <img src="{{cp.image.url}}" class="img-fluid">
+              {% endif %}
+              </div>
+            <a href="{% url 'produits' %}">
+              <div class="media-body py-md-4">
+                <h3>{{cp.name}}</h3>
+              </div>
+            </a>
+            </div>  
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="mt-5 ftco-section ftco-agent ftco-no-pt">
+  <div class="container">
+    <div class="row justify-content-center pb-5">
+      <div class="col-md-12 heading-section text-center ftco-animate">
+        <span class="subheading">Solutions</span>
+        <h2 class="mb-4">DÉCOUVREZ NOS SOLUTIONS</h2>
+      </div>
+
+      <div class="m-3 row">
+      {% for sol in cat_sol %}
+      {% if sol.active %}
+        
+      <div class="col- col-sm-6 col-md-3 ftco-animate">
+        <div class="agent">
+          <div class="img">
+            {% if sol.image %}
+            <img src="{{sol.image.url}}" class="img-fluid" alt="Colorlib Template">
+              
+           
+            {% endif %}
+            
+          </div>
+          <div class="desc">
+            <h3><a href="{% url 'solution-detail' sol.slug %}">{{sol.name}}</a></h3>
+
+          </div>
+        </div> 
+      </div>
+      {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

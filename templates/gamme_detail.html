@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% static "img" as baseUrl %}
+    
+{% block content %}
+ 
+
+<h1 class="m-5 bread text-danger">{{produit.name}}</h1>
+      <div class="container m-4">
+        <div class="row d-flex flex-row-reverse justify-content-around justify-content-lg-center">
+          <div class="col- col-sm-9 col-md-7">
+            <h3>{{produit.sous_titre}}</h3>
+          </div>
+            <div class="col- col-sm-9 col-md-4 ">
+              <img class="img-sadow rounded" src="{{produit.image.url}}" alt="">
+            </div>
+        </div>
+      </div>
+      <hr class="m-3">
+<div class="container">
+  <div class="row m-5 ">
+      <h6>{{produit.description|linebreaks}}</h6>
+  </div>
+</div>
+		<section class="container-fluid ">
+      <h2 class="text-danger">Produits de la gamme</h2>
+        <div class="row d-flex ">
+          {% for ga in gamme %}
+            <div class="row d-flex justify-content-center col-6 col-md-4 col-lg-3 border-right border-danger">
+                <div class="">
+                  <h3 class="heading"><p>{{ga.name}}</p></h3>
+ 
+                  <div class="block-20 ">
+                    {% if ga.image %}
+                      <img class="img-sadow ml-auto" src="{{ga.image.url}}" alt="{{ga.name}}" >
+                    {% endif %}
+                  </div>
+                </div>
+            </div>
+          {% endfor %}
+
+
+
+ 
+
+
+    {% endblock content %}
