@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slide, Categorie_produit, Categories_Solution, SliderAPropos, Catalogue, ContactForm, Partenaire, Produit, ProduitDetail, Post
+from .models import Slide, Categorie_produit, Categories_Solution, SliderAPropos, Catalogue, ContactForm, Partenaire, Produit2, ProduitDetail, Post
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -11,9 +11,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class SolutionCategoryAdmin(CategoryAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ('id','name', 'active')
+    list_display = ('id','ordre','name', 'active')
     list_display_links = ('id', 'name')
-    list_editable = ('active',)
+    list_editable = ('ordre','active',)
 
 class SliderAProposAdmin(CategoryAdmin):
     pass
@@ -27,11 +27,17 @@ class ContactFormAdmin(CategoryAdmin):
     readonly_fields = ('date_added',)
 
 class PartenairesAdmin(CategoryAdmin):
-    pass
+    list_display = ('id', 'ordre', 'name', 'active')
+    list_editable = ('ordre', 'active')
 
-class ProduitAdmin(CategoryAdmin):
+
+
+class Produit2Admin(CategoryAdmin):
+    list_display = ('id','ordre','name')
+    list_display_links = ('id','name')
+    list_editable = ('ordre',)
+
     prepopulated_fields = {"slug": ("name",)}
-
 
 class ProduitDetailAdmin(CategoryAdmin):
     list_display = ('id','name', 'gamme')
@@ -51,6 +57,6 @@ admin.site.register(SliderAPropos, SliderAProposAdmin)
 admin.site.register(Catalogue, CatalogueAdmin)
 admin.site.register(ContactForm, ContactFormAdmin)
 admin.site.register(Partenaire, PartenairesAdmin)
-admin.site.register(Produit, ProduitAdmin)
+admin.site.register(Produit2, Produit2Admin)
 admin.site.register(ProduitDetail, ProduitDetailAdmin)
 admin.site.register(Post, PostAdmin)

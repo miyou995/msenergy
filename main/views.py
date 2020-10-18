@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
-from .models import Slide, Categorie_produit, Categories_Solution, SliderAPropos, Catalogue, Partenaire, Produit, ProduitDetail, Post
+from .models import Slide, Categorie_produit, Categories_Solution, SliderAPropos, Catalogue, Partenaire,  ProduitDetail, Post, Produit2
 from django.core.mail import send_mail, EmailMessage
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -49,11 +49,11 @@ class CatalogueListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["batiment"] = Produit.objects.filter(gamme__name__exact='BATIMENT')
-        context["ind"] = Produit.objects.filter(gamme__name__exact='INDUSTRIE')
-        context["cable"] = Produit.objects.filter(gamme__name__exact='CABLE ET INSTALLATION')
-        context["eclairage"] = Produit.objects.filter(gamme__name__exact='Eclairage')
-        context["Onduleurs"] = Produit.objects.filter(gamme__name__exact='Onduleurs et DATA Center')
+        context["batiment"] = Produit2.objects.filter(gamme__name__exact='BATIMENT')
+        context["ind"] = Produit2.objects.filter(gamme__name__exact='INDUSTRIE')
+        context["cable"] = Produit2.objects.filter(gamme__name__exact='CABLE ET INSTALLATION')
+        context["eclairage"] = Produit2.objects.filter(gamme__name__exact='Eclairage')
+        context["Onduleurs"] = Produit2.objects.filter(gamme__name__exact='Onduleurs et DATA Center')
         context["cat_sol"] = Categories_Solution.objects.all()
 
         return context

@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.db.models import F
+import uuid
+
 
 from ckeditor.fields import RichTextField
 # Create your models here.
@@ -43,9 +46,27 @@ class Produit(models.Model):
         return self.name
 
     class Meta:
+        verbose_name = 'ProduitsB'
+        verbose_name_plural = 'ProduitsB'
+
+
+class Produit2(models.Model):
+
+    ordre       = models.IntegerField(blank=True, null=True)
+    name        = models.CharField( max_length=50)
+    slug        = models.SlugField( max_length=70)
+    gamme       = models.ForeignKey("Categorie_produit", verbose_name=("catégorie gamme"), on_delete=models.CASCADE)
+    sous_titre  = models.CharField(max_length=100, verbose_name=("Sous titre"), blank= True)
+    description  = models.TextField(blank= True)
+    image       = models.FileField(upload_to='slides/', blank= True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['ordre']
         verbose_name = 'Produits'
         verbose_name_plural = 'Produits'
-
 
 class ProduitDetail(models.Model):
     name        = models.CharField(max_length=50)
@@ -60,6 +81,8 @@ class ProduitDetail(models.Model):
 
 
 class Categories_Solution(models.Model):
+    ordre       = models.IntegerField(blank=True, null=True )
+
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=100, blank=True)
     
@@ -73,6 +96,7 @@ class Categories_Solution(models.Model):
 
 
     class Meta:
+        ordering = ['ordre']
         verbose_name = 'solution'
         verbose_name_plural = 'solutions'
 
@@ -124,12 +148,19 @@ class ContactForm(models.Model):
         verbose_name = 'Formulaire de contact'
 
 class Partenaire(models.Model):
-    name= models.CharField( max_length=50)
-    logo = models.ImageField(upload_to='part/')
-    url_marque = models.URLField(max_length=200, blank=True) 
+    ordre       = models.IntegerField(blank=True, null=True)
+    name        = models.CharField( max_length=50)
+    logo        = models.ImageField(upload_to='part/')
+    url_marque  = models.URLField(max_length=200, blank=True) 
+    active = models.BooleanField(default=True)
+
 
     def __str__(self):
         return self.name
+    class Meta:
+        ordering = [F('ordre').asc(nulls_last=True)]
+
+
 
 class Post(models.Model):
     titre = models.CharField(max_length=200)
