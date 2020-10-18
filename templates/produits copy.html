@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% static "images" as baseUrl %}
+{% block content %}
+
+
+	<section class="ftco-section  ftco-agent catalogue">
+		  
+<center><h1 class="d-block text-white h2 mx-4">Un vaste choix de produits qui vous permettent d'offrir des solutions et de configurer des systèmes qui tiennent
+	compte des dernières innovations technologiques.</h1></center>
+		<div class="container ml-auto mr-auto" >
+			<div class="">
+
+			{% comment %} Batiment {% endcomment %}
+			<div class="row ">
+			<div class="col-12">
+				<div class="d-flex">
+					<img class="icon-cat img-fluid" src="/static/images/buildings.svg" alt="">
+					<h2 class="ml-3 titre">Batiment</h2>
+				</div>
+				<hr>
+			</div>
+				{% for gamme in batiment %}				  
+					<div class="col-md-3">
+						<div class="agent">
+							<div class="img overflow-hidden" ">
+								<img src="{{gamme.image.url}}" class="img-fluid" alt="Colorlib Template">
+							</div>
+							<div class="desc">
+								<h3><a href="{% url 'gamme' gamme.slug %}">{{gamme.name}}</a></h3>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			{% comment %}  INDUSTRY {% endcomment %}
+
+			<div class="row">
+			<div class="col-12">
+				<div class="d-flex">
+					<img class="icon-cat img-fluid" src="/static/images/factory.svg">
+					<h2 class="ml-3 titre">Industrie</h2>
+				</div>
+				<hr>
+			</div>
+				{% for gamme in ind %}				  
+					<div class="col-md-3">
+						<div class="agent">
+								<div class="img">
+									<img src="{{gamme.image.url}}" class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3><a href="{{gamme.get_absolute_url}}">{{gamme.name}}</a></h3>
+										
+								</div>
+							</div>
+					</div>
+				{% endfor %}
+			</div>
+			{% comment %}  Cable {% endcomment %}
+
+
+			<div class="row">
+			<div class="col-12">
+				<div class="d-flex">
+					<img class="icon-cat img-fluid" src="/static/images/electrician.svg" alt="">
+					<h2 class="ml-3 titre">CABLE ET INSTALLATION</h2>
+				</div>
+				<hr>
+			</div>
+				{% for gamme in cable %}				  
+					<div class="col-md-3">
+						<div class="agent">
+								<div class="img">
+									<img src="{{gamme.image.url}}" class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3><a href="{{gamme.get_absolute_url}}">{{gamme.name}}</a></h3>
+										
+								</div>
+							</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			{% comment %}  Eclairage {% endcomment %}
+
+			<div class="row">
+			<div class="col-12">
+				<div class="d-flex">
+					<img class="icon-cat img-fluid" src="/static/images/idea.svg" alt="">
+					<h2 class="ml-3 titre">Eclairage</h2>
+				</div>
+				<hr>
+			</div>
+				{% for gamme in eclairage %}				  
+					<div class="col-md-3">
+						<div class="agent">
+								<div class="img">
+									<img src="{{gamme.image.url}}" class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3><a href="{{gamme.get_absolute_url}}">{{gamme.name}}</a></h3>
+										
+								</div>
+							</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+
+			{% comment %}  Onduleurs et data center {% endcomment %}
+			
+	{% if Onduleurs %}
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex">
+				<img class="icon-cat img-fluid" src="/static/images/cloud-storage.svg" alt="">
+				<h2 class="ml-3 titre">Onduleurs et data center</h2>
+			</div>
+			<hr>
+		</div>
+			{% for gamme in Onduleurs %}				  
+				<div class="col-md-3">
+					<div class="agent">
+							<div class="img">
+								<img src="{{gamme.image.url}}" class="img-fluid" alt="Colorlib Template">
+							</div>
+							<div class="desc">
+								<h3><a href="{{gamme.get_absolute_url}}">{{gamme.name}}</a></h3>
+							</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+			
+
+    	</div>
+    </section>
+
+
+{% endblock content %}
+
