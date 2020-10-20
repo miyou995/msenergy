@@ -49,11 +49,7 @@ class CatalogueListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["batiment"] = Produit2.objects.filter(gamme__name__exact='BATIMENT')
-        context["ind"] = Produit2.objects.filter(gamme__name__exact='INDUSTRIE')
-        context["cable"] = Produit2.objects.filter(gamme__name__exact='CABLE ET INSTALLATION')
-        context["eclairage"] = Produit2.objects.filter(gamme__name__exact='Eclairage')
-        context["Onduleurs"] = Produit2.objects.filter(gamme__name__exact='Onduleurs et DATA Center')
+        context["produits"] = Produit2.objects.all()
         context["cat_sol"] = Categories_Solution.objects.all()
 
         return context
@@ -118,7 +114,7 @@ class GammeDetailList(ListView):
     context_object_name = 'produit'
 
     def get_queryset(self):
-        self.gamme = get_object_or_404(Produit, slug=self.kwargs['slug'])
+        self.gamme = get_object_or_404(Produit2, slug=self.kwargs['slug'])
         return self.gamme
 
 

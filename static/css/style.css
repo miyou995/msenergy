@@ -9342,9 +9342,9 @@ textarea.form-control {
     transition: all 0.6s ease; }
   .agent .desc {
     position: relative;
-    width: 85%;
+    width: 95%;
     padding: 20px;
-    margin-top: -50px;
+    margin-top: -100px;
     margin-left: 20px;
     background: #fff;
     -webkit-box-shadow: 0px 5px 21px -14px rgba(0, 0, 0, 0.14);
@@ -9352,7 +9352,7 @@ textarea.form-control {
     box-shadow: 0px 5px 21px -14px rgba(0, 0, 0, 0.24); }
     @media (min-width: 768px) {
       .agent .desc {
-        width: 80%; } }
+        width: 90%; } }
     .agent .desc h3 {
       color: #000000;
       font-weight: 500;

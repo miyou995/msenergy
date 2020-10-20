@@ -13,7 +13,7 @@ urlpatterns = [
     path('contact/', ContactFormView.as_view(), name= 'contact'),
     path('partenaires/', PartenaireView.as_view(), name= 'partenaires'),
     path('actualite/', BlogView.as_view(), name= 'blog'),
-    path('produits-<slug:slug>/', GammeDetailList.as_view(), name= 'gamme'),
+    path('produits-<slug:slug>/', GammeDetailList.as_view(), name= 'produit-detail'),
     # path('catalogue/<int:pk>/', GammeDetail.as_view(), name= 'gamme'),
 ]
 

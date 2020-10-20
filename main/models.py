@@ -70,7 +70,7 @@ class Produit2(models.Model):
 
 class ProduitDetail(models.Model):
     name        = models.CharField(max_length=50)
-    gamme       = models.ForeignKey("Produit", verbose_name=("catégorie gamme"), on_delete=models.CASCADE)
+    gamme       = models.ForeignKey("Produit2", verbose_name=("catégorie gamme"), on_delete=models.CASCADE)
     image       = models.FileField(upload_to='slides/', blank= True)
     def __str__(self):
         return  self.name
