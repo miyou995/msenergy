@@ -2,129 +2,51 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.db.models import F
-import uuid
 
 
 from ckeditor.fields import RichTextField
 # Create your models here.
+
+CATEGORY_CHOICES=[
+    ('IN', 'Intrusion'),
+    ('IC', 'Incendie Conventionnelle'),
+    ('IA', 'Incendie Adressable'),
+    ]
+
+
+class Produit(models.Model):
+
+    # ordre       = models.IntegerField(blank=True, null=True)
+    name        = models.CharField( max_length=50)
+    slug        = models.SlugField( max_length=70)
+    category    = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default='IN')
+    sous_titre  = models.CharField(max_length=100, verbose_name=("Sous titre"), blank= True)
+    description = RichTextField(verbose_name='Text en plus', blank= True, null=True)
+    info_sup    = RichTextField(verbose_name='informations suplaimentaires', blank= True, null=True)
+    photo       = models.ImageField(verbose_name='Photo du produit', upload_to='produits/')
+    photo_2     = models.ImageField(verbose_name='Photo du produit 2', upload_to='produits/', blank= True)
+    fichier_1   = models.FileField(verbose_name='fichier 1', upload_to='fichiers/', blank= True)
+    fichier_2   = models.FileField(verbose_name='fichier 2', upload_to='fichiers/', blank= True)
+    fichier_3   = models.FileField(verbose_name='fichier 3', upload_to='fichiers/', blank= True)
+    fichier_4   = models.FileField(verbose_name='fichier 4', upload_to='fichiers/', blank= True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Produits'
+        verbose_name_plural = 'Produits'
+
+
+
 class Slide(models.Model):
-    name = models.CharField(max_length=50)
-    title = models.CharField(max_length= 200, blank = True)
+    title = models.CharField(verbose_name='titre' ,max_length= 200, blank = True)
     image = models.ImageField(upload_to= 'slides/')
     class Meta:
         verbose_name = "Photo page d'accueil"
         verbose_name_plural = "Photos page d'accueil"
 
-    
 
-
-class Categorie_produit(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(blank= True)
-    image = models.FileField(upload_to='slides/', blank= True)
-
-    def __str__(self):
-        return self.name
-    
-    def get_absolute_url(self):
-        return reverse("catalogue", kwargs={"pk": self.pk})
-
-    class Meta:
-        verbose_name = 'Catégorie produit'
-        verbose_name_plural = 'Catégories produits'
-
-class Produit(models.Model):
-    name        = models.CharField( max_length=50)
-    slug        = models.SlugField( max_length=70)
-    titre       = models.CharField( max_length=50, blank= True)
-    gamme       = models.ForeignKey("Categorie_produit", verbose_name=("catégorie gamme"), on_delete=models.CASCADE)
-    sous_titre  = models.CharField(max_length=100, verbose_name=("Sous titre"), blank= True)
-    description  = models.TextField(blank= True)
-    image       = models.FileField(upload_to='slides/', blank= True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'ProduitsB'
-        verbose_name_plural = 'ProduitsB'
-
-
-class Produit2(models.Model):
-
-    ordre       = models.IntegerField(blank=True, null=True)
-    name        = models.CharField( max_length=50)
-    slug        = models.SlugField( max_length=70)
-    gamme       = models.ForeignKey("Categorie_produit", verbose_name=("catégorie gamme"), on_delete=models.CASCADE)
-    sous_titre  = models.CharField(max_length=100, verbose_name=("Sous titre"), blank= True)
-    description  = models.TextField(blank= True)
-    image       = models.FileField(upload_to='slides/', blank= True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ['ordre']
-        verbose_name = 'Produits'
-        verbose_name_plural = 'Produits'
-
-class ProduitDetail(models.Model):
-    name        = models.CharField(max_length=50)
-    gamme       = models.ForeignKey("Produit2", verbose_name=("catégorie gamme"), on_delete=models.CASCADE)
-    image       = models.FileField(upload_to='slides/', blank= True)
-    def __str__(self):
-        return  self.name
-
-    def __unicode__(self):
-        return 
-
-
-
-class Categories_Solution(models.Model):
-    ordre       = models.IntegerField(blank=True, null=True )
-
-    name = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=100, blank=True)
-    
-    text1 = models.TextField(verbose_name='Grand titre' ,blank= True)
-    image = models.ImageField(verbose_name='Image principale' ,upload_to='slides/', blank= True)
-    image2 = models.ImageField(upload_to='slides/', blank= True)
-    description = models.TextField(blank= True)
-    text2 = RichTextField(verbose_name='Text en plus', blank= True, null=True)
-    active = models.BooleanField(default=True)
-
-
-
-    class Meta:
-        ordering = ['ordre']
-        verbose_name = 'solution'
-        verbose_name_plural = 'solutions'
-
-
-class SliderAPropos(models.Model):
-    name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='slides/')
-
-    class Meta:
-        verbose_name = 'photo page a propos'
-        verbose_name_plural = 'photos page a propos'
-
-
-class Catalogue(models.Model):
-    categorie = models.ForeignKey("Categorie_produit", verbose_name=("catégorie"), on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='slides/')
-    description = models.TextField(blank= True)
-
-#     # def get_absolute_url(self):
-#     #     # return reverse("gamme", kwargs={'id': self.id, 'categorie_id': self.categorie_id})
-#     #     return "/catalogue/%i/" %self.id
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'gamme'
-        verbose_name_plural = 'catalogue'
 
 DEPARTEMENT_CHOICES=[
     ('C', 'Commercial'),
@@ -132,6 +54,7 @@ DEPARTEMENT_CHOICES=[
     ('M', 'Marketing'),
     ('SC', 'Service client'),
     ]
+
 class ContactForm(models.Model):
     name        = models.CharField(max_length=50)
     departement = models.CharField(max_length=2, choices=DEPARTEMENT_CHOICES, default='D',)
@@ -144,21 +67,9 @@ class ContactForm(models.Model):
 
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = 'Formulaire de contact'
-
-class Partenaire(models.Model):
-    ordre       = models.IntegerField(blank=True, null=True)
-    name        = models.CharField( max_length=50)
-    logo        = models.ImageField(upload_to='part/')
-    url_marque  = models.URLField(max_length=200, blank=True) 
-    active = models.BooleanField(default=True)
-
-
-    def __str__(self):
-        return self.name
-    class Meta:
-        ordering = [F('ordre').asc(nulls_last=True)]
 
 
 
@@ -173,3 +84,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titre
+
+
+

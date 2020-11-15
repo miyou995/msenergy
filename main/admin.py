@@ -1,62 +1,27 @@
 from django.contrib import admin
-from .models import Slide, Categorie_produit, Categories_Solution, SliderAPropos, Catalogue, ContactForm, Partenaire, Produit2, ProduitDetail, Post
-# Register your models here.
+from .models import Produit
 
-class CategoryAdmin(admin.ModelAdmin):
+admin.autodiscover()
+admin.site.enable_nav_sidebar = False
+
+
+
+class ProduitAdmin(admin.ModelAdmin):
     list_display = ('id','name')
+    prepopulated_fields = {"slug": ("name",)}
     list_display_links = ('id','name',)
     list_per_page = 40
     list_filter = ('name',)
     search_fields = ('id', 'name',)
 
-class SolutionCategoryAdmin(CategoryAdmin):
-    prepopulated_fields = {"slug": ("name",)}
-    list_display = ('id','ordre','name', 'active')
-    list_display_links = ('id', 'name')
-    list_editable = ('ordre','active',)
+admin.site.register(Produit, ProduitAdmin)
 
-class SliderAProposAdmin(CategoryAdmin):
-    pass
-
-class CatalogueAdmin(CategoryAdmin):
-    list_display = ('id','name', 'categorie')
-    list_filter = ('name', 'categorie',)
-
-class ContactFormAdmin(CategoryAdmin):
-    list_display = ('id','name', 'date_added', 'departement')
-    readonly_fields = ('date_added',)
-
-class PartenairesAdmin(CategoryAdmin):
-    list_display = ('id', 'ordre', 'name', 'active')
-    list_editable = ('ordre', 'active')
-
-
-
-class Produit2Admin(CategoryAdmin):
-    list_display = ('id','ordre','name')
-    list_display_links = ('id','name')
-    list_editable = ('ordre',)
-
-    prepopulated_fields = {"slug": ("name",)}
-
-class ProduitDetailAdmin(CategoryAdmin):
-    list_display = ('id','name', 'gamme')
-    list_filter = ('gamme',)
-
-class PostAdmin(admin.ModelAdmin):
-    list_display = ('id','titre')
-    list_display_links = ('id','titre',)
-    prepopulated_fields = {"slug": ("titre",)}
-
-
-
-admin.site.register(Slide, CategoryAdmin)
-admin.site.register(Categorie_produit, CategoryAdmin)
-admin.site.register(Categories_Solution, SolutionCategoryAdmin)
-admin.site.register(SliderAPropos, SliderAProposAdmin)
-admin.site.register(Catalogue, CatalogueAdmin)
-admin.site.register(ContactForm, ContactFormAdmin)
-admin.site.register(Partenaire, PartenairesAdmin)
-admin.site.register(Produit2, Produit2Admin)
-admin.site.register(ProduitDetail, ProduitDetailAdmin)
-admin.site.register(Post, PostAdmin)
+# admin.site.register(Slide, CategoryAdmin)
+# admin.site.register(Categorie_produit, CategoryAdmin)
+# admin.site.register(Categories_Solution, SolutionCategoryAdmin)
+# admin.site.register(SliderAPropos, SliderAProposAdmin)
+# admin.site.register(Catalogue, CatalogueAdmin)
+# admin.site.register(ContactForm, ContactFormAdmin)
+# admin.site.register(Partenaire, PartenairesAdmin)
+# admin.site.register(ProduitDetail, ProduitDetailAdmin)
+# admin.site.register(Post, PostAdmin)

@@ -1,180 +1,288 @@
 {% load static %}
 {% static "img" as baseUrl %}
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="zxx">
 
 <head>
-    <title>MS ENERGY</title>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SUP ELECTROTECH</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-
-  <link rel="stylesheet" href="{% static 'css/lightbox.styles.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
-
-    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
-    
-    
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
-    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-
-
-
-
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
-
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}"><span style="color: red;"><img src="{% static 'images/logo.png' %}" alt="" srcset=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="{% url 'index' %}" class="nav-link">Accueil</a></li>
-                    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">A propos</a></li>
-                    <li class="nav-item"><a href="{% url 'produits' %}" class="nav-link text-lg-center d-block">Produits</a></li>
-                    <li class="nav-item"><a href="{% url 'solution' %}" class="nav-link">Solutions</a></li>
-                    <li class="nav-item"><a href="{% url 'partenaires' %}" class="nav-link">Partenaires</a></li>
-                    <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Actualité</a></li>
-                           {% comment %}
-                           <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Actualité</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link text-dark" href="#">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link  text-dark" href="#">Blog Details</a></li>
-                            </ul>
-                        </li>
-                           {% endcomment %} 
-                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
-                </ul>
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6 ">
+                            <div class="social_media_links">
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="short_contact_list">
+                                <ul>
+                                    <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                    <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-3 col-lg-2">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="{% static 'img/logo.png' %}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-7">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="active" href="{% url 'index' %}">home</a></li>
+                                            <li><a href="{% url 'about' %}">About</a></li>
+                                            <li><a href="service.html">Produits</a></li>
+                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">blog</a></li>
+                                                    <li><a href="single-blog.html">single-blog</a></li>
+                                                </ul>
+                                            </li>
+                                            <!-- <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                     <li><a href="elements.html">elements</a></li>
+                                                    <li><a href="Portfolio.html">Portfolio</a></li>
+                                                    <li><a href="portfolio_details.html">Portfolio details</a></li>
+                                                </ul>
+                                            </li> -->
+                                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="Appointment">
+                                    <div class="search_button">
+                                        <a href="#">
+                                            <i class="ti-search"></i>
+                                        </a>
+                                    </div>
+                                    <div class="book_btn d-none d-lg-block">
+                                        <a class="popup-with-form" href="#test-form">un devis ?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </nav>
-    <!-- END nav -->
+    </header>
+    <!-- header-end -->
+{% block content %}
+  
+{% endblock content %}
+    
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <div class="footer_logo">
+                                <a href="#">
+                                    <img src="{% static 'img/footer_logo.png' %}" alt="">
+                                </a>
+                            </div>
+                            <p>
+                                Base <br> line
+                            </p>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="ti-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="ti-twitter-alt"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 
-    {% block content %}
-
-    {% endblock content %}
-
-
-
-    <footer class="ftco-footer ftco-section">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col- col-sm-6  col-md-3 ">
-                    <div class="ftco-footer-widget m-4">
-                        <div class="ftco-heading-2">
-                            <a class="navbar-brand" href="{% url 'index' %}" style="color: black;"><img class="img-fluid" src="{% static 'images/logo-footer.png' %}" alt=""></a>
-                            <p>VOTRE MAISON SIMPLEMENT <br> CONNECTEE SANS FILS</p>
                         </div>
-                        <ul class="ftco-footer-social list-unstyled mt-5">
-                            <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li> -->
-                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-linkedin"></span></a></li>
-                        </ul>
                     </div>
-                </div>
-                <div class="col- col-sm-6  col-md-3">
-                    <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Liens Rapides</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="{% url 'index' %}"><span class="icon-long-arrow-right mr-2"></span>Accueil</a></li>
-                            <li><a href="{% url 'about' %}"><span class="icon-long-arrow-right mr-2"></span>A propos</a></li>
-                            <li><a href="{% url 'produits' %}"><span class="icon-long-arrow-right mr-2"></span>Catalogue Produits</a></li>
-                            <li><a href="{% url 'solution' %}"><span class="icon-long-arrow-right mr-2"></span>Solutions</a></li>
-                            <li><a href="{% url 'partenaires' %}"><span class="icon-long-arrow-right mr-2"></span>Partenaires</a></li>
-                            <li><a href="{% url 'blog' %}"><span class="icon-long-arrow-right mr-2"></span>Actualité</a></li>
-                            <li><a href="{% url 'contact' %}"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col- col-sm-6  col-md-3 ">
-                    <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Solutions</h2>
-                        <ul class="list-unstyled">
-                            {% for sol in cat_sol %}
-                            <li><a href="{% url 'solution-detail' slug=sol.slug %}"><span class="icon-long-arrow-right mr-2"></span>{{sol.name}}</a></li>
-                              
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class=" col-sm-6 col-md-3">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Une Question ? </h2>
-                        <div class="block-23 mb-3">
+                    <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                    Solutions
+                            </h3>
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">42 Coopérative les hauts plateaux Ouled Fayet Alger</span></li>
-                                
-                                <li><a href="tel://+213555017091"><span class="icon icon-phone"></span><span class="text">+213 555 017 091</span></a></li>
-                                <li><a href="mailto:dircom.groupe_abdi@yahoo.fr"><span class="icon icon-envelope pr-4"></span><span class="text">dircom.groupe_abdi@yahoo.fr</span></a></li>
+                                <li><a href="#">détection intrusion</a></li>
+                                <li><a href="#">détection incendie</a></li>
                             </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-lg-2">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                    Liens rapides
+                            </h3>
+                            <ul>
+                                <li><a href="#">A propos</a></li>
+                                <li><a href="#">Produits</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Devis Gratuit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Address
+                            </h3>
+                            <ul>
+                                    <li>200, D-block, Green lane Blida</li>
+                                    <li>+213 367 467 552</li>
+                                    <li><a href="#"> contact@sup.com</a></li>
+                                </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        Tout droits réservés | Créer par <a href="https://octopus-consulting.com" style="color: #233774;">OCTOPUS CONSULTING</a>
-                       
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
+        </div>
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | powred by <a href="#" target="_blank">OCTOPUS CONSULTING</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    <!--/ footer end  -->
 
+    <!-- link that opens popup -->
 
+    <!-- form itself end-->
+    <form id="test-form" class="white-popup-block mfp-hide">
+        <div class="popup_box ">
+            <div class="popup_inner">
+                <div class="popup_header">
+                    <h3>Demandez un devis</h3>
+                </div>
+                <div class="custom_form">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <input type="text" placeholder="Votre Nom">
+                            </div>
+                            <div class="col-xl-12">
+                                <input type="email" placeholder="Email">
+                            </div>
+                            <div class="col-xl-12">
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                            </div>
+                            <div class="col-xl-12">
+                                <button type="submit" class="boxed-btn3">Envoyer</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- form itself end -->
 
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <!--contact js-->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
 
-  
-<script src="{% static 'js/jquery.min.js' %}"></script>
-  
-<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
-<script src="{% static 'js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/aos.js' %}"></script>
-<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
-<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
-<script src="{% static 'js/scrollax.min.js' %}"></script>
-<script src="{% static 'js/lightbox.scripts.js' %}"></script>
-
-<script src="{% static 'js/main.js' %}"></script>
-
-    
-
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block script %}
+      
+    {% endblock script %}
 </body>
 
 </html>

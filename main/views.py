@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
-from .models import Slide, Categorie_produit, Categories_Solution, SliderAPropos, Catalogue, Partenaire,  ProduitDetail, Post, Produit2
 from django.core.mail import send_mail, EmailMessage
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import ContactForm
-
+from .models import ContactForm
 # Create your views here.
 
 class Home(TemplateView):
@@ -13,9 +12,9 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["slides"] = Slide.objects.all()
-        context["cat_prod"] = Categorie_produit.objects.all()
-        context["cat_sol"] = Categories_Solution.objects.all()
+        # context["slides"] = Slide.objects.all()
+        # context["cat_prod"] = Categorie_produit.objects.all()
+        # context["cat_sol"] = Categories_Solution.objects.all()
         return context
     
 class AboutView(TemplateView):
@@ -23,34 +22,22 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["slides"] = SliderAPropos.objects.all()
-        context["cat_prod"] = Categorie_produit.objects.all()
-        context["cat_sol"] = Categories_Solution.objects.all()
+        # context["slides"] = SliderAPropos.objects.all()
+        # context["cat_prod"] = Categorie_produit.objects.all()
+        # context["cat_sol"] = Categories_Solution.objects.all()
 
         return context
 
-# class CatalogueListView(TemplateView):
-#     template_name = "catalogue.html"
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["batiment"] = Catalogue.objects.filter(categorie__name__exact='BATIMENT')
-#         context["ind"] = Catalogue.objects.filter(categorie__name__exact='INDUSTRIE')
-#         context["cable"] = Catalogue.objects.filter(categorie__name__exact='CABLE ET INSTALLATION')
-#         context["eclairage"] = Catalogue.objects.filter(categorie__name__exact='Eclairage')
-#         context["Onduleurs"] = Catalogue.objects.filter(categorie__name__exact='Onduleurs et DATA Center')
-#         context["cat_sol"] = Categories_Solution.objects.all()
 
-#         return context
-    
 
 class CatalogueListView(TemplateView):
     template_name = "produits.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["produits"] = Produit2.objects.all()
-        context["cat_sol"] = Categories_Solution.objects.all()
+        # context["produits"] = Produit2.objects.all()
+        # context["cat_sol"] = Categories_Solution.objects.all()
 
         return context
 
@@ -60,21 +47,29 @@ class SolutionView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cat_sol"] = Categories_Solution.objects.all()
+        # context["cat_sol"] = Categories_Solution.objects.all()
         return context
     
 
 
-class SolutionDetail(DetailView):
-    model = Categories_Solution
-    template_name='solution-detail.html'
-    context_object_name = 'solution'
+# class SolutionDetail(DetailView):
+#     model = Categories_Solution
+#     template_name='solution-detail.html'
+#     context_object_name = 'solution'
+    
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["cat_sol"] = Categories_Solution.objects.all()
+#         return context
+
+class ContactView(TemplateView):
+    template_name = "contact.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cat_sol"] = Categories_Solution.objects.all()
+        # context["cat_sol"] = Categories_Solution.objects.all()
         return context
-
+    
 
 class ContactFormView(CreateView):
     template_name = 'contact.html'
@@ -94,52 +89,44 @@ class ContactFormView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cat_sol"] = Categories_Solution.objects.all()
+        # context["cat_sol"] = Categories_Solution.objects.all()
         return context
 
 
-class PartenaireView(TemplateView):
-    template_name = "partenaires.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["partenaires"] = Partenaire.objects.all() 
-        context["cat_sol"] = Categories_Solution.objects.all()
-
-        return context
     
-class GammeDetailList(ListView):
-    model = ProduitDetail
-    template_name = 'gamme_detail.html'
-    context_object_name = 'produit'
+# class GammeDetailList(ListView):
+#     model = ProduitDetail
+#     template_name = 'gamme_detail.html'
+#     context_object_name = 'produit'
 
-    def get_queryset(self):
-        self.gamme = get_object_or_404(Produit2, slug=self.kwargs['slug'])
-        return self.gamme
-
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['gamme'] = ProduitDetail.objects.filter(gamme=self.gamme)
-        context["partenaires"] = Partenaire.objects.all() 
-        context["cat_sol"] = Categories_Solution.objects.all()
-
-        return context
+#     def get_queryset(self):
+#         self.gamme = get_object_or_404(Produit2, slug=self.kwargs['slug'])
+#         return self.gamme
 
 
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['gamme'] = ProduitDetail.objects.filter(gamme=self.gamme)
+#         context["partenaires"] = Partenaire.objects.all() 
+#         context["cat_sol"] = Categories_Solution.objects.all()
 
-class BlogView(TemplateView):
-    template_name = "blog.html"
+#         return context
 
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.all()
-        context["partenaires"] = Partenaire.objects.all() 
-        context["cat_sol"] = Categories_Solution.objects.all()
 
-        return context
+# class BlogView(TemplateView):
+#     template_name = "blog.html"
 
-class PostDetail(DetailView):
-    model = Post
-    template_name='blog-detail.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['posts'] = Post.objects.all()
+#         context["partenaires"] = Partenaire.objects.all() 
+#         context["cat_sol"] = Categories_Solution.objects.all()
+
+#         return context
+
+# class PostDetail(DetailView):
+#     model = Post
+#     template_name='blog-detail.html'
